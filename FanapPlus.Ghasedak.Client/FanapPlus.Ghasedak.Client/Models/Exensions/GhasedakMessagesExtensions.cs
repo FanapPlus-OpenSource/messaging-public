@@ -2,12 +2,13 @@
 using System.Security.Cryptography;
 using System.Text;
 using FanapPlus.Ghasedak.Client.Models.Outgoing;
+using FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels;
 
 namespace FanapPlus.Ghasedak.Client.Models.Exensions
 {
     internal static class GhasedakMessagesExtensions
     {
-        internal static void SignWith(this GhasedakOutgoingMessageRequest request, string key)
+        internal static void SignWith(this InlineGhasedakOutgoingMessageRequest request, string key)
         {
             if (request?.Messages == null)
             {

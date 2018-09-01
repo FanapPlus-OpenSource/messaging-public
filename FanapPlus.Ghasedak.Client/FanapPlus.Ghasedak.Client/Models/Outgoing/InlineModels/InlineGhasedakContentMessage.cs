@@ -1,6 +1,6 @@
-﻿namespace FanapPlus.Ghasedak.Client.Models.Outgoing
+﻿namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
 {
-    public class GhasedakContentMessage
+    internal class InlineGhasedakContentMessage
     {
         public string Sid { get; set; }
         public string AccountId { get; set; }
@@ -9,5 +9,6 @@
         public ChannelType ChannelType { get; set; }
         public MessagePriority Priority { get; set; }
         public string ReplyTo { get; set; }
+        public string Signature { get; set; }
     }
 }

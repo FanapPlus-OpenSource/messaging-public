@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FanapPlus.Ghasedak.Client.Models;
 using FanapPlus.Ghasedak.Client.Models.Exensions;
+using FanapPlus.Ghasedak.Client.Models.Mappers;
 using FanapPlus.Ghasedak.Client.Models.Outgoing;
 using ServiceStack.Text;
 
@@ -45,8 +46,10 @@ namespace FanapPlus.Ghasedak.Client
             }
 
             var serializer = new JsonSerializer<GhasedakSendResponse>();
-            message.SignWith(options.PrivateKey);
-            var content = message.CreateContent();
+
+            var inlineMessage = message.MapToInlineGhasedakOutgoingMessageRequest();
+            inlineMessage.SignWith(options.PrivateKey);
+            var content = inlineMessage.CreateContent();
 
             var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
 
@@ -56,7 +59,6 @@ namespace FanapPlus.Ghasedak.Client
             var ghasedakResponse = serializer.DeserializeFromString(ghasedakResponseString);
 
             return ghasedakResponse;
-
         }
 
         public async Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingMessageRequest message, string privateKey)
