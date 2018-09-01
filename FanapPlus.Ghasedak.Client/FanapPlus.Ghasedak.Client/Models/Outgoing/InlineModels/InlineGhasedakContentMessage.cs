@@ -8,6 +8,7 @@
         public MessageType MessageType { get; set; }
         public ChannelType ChannelType { get; set; }
         public MessagePriority Priority { get; set; }
+        public string ExpirationTime { get; set; }
         public string ReplyTo { get; set; }
         public string Signature { get; set; }
     }

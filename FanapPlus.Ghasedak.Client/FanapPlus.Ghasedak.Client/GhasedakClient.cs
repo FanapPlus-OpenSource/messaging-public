@@ -40,6 +40,7 @@ namespace FanapPlus.Ghasedak.Client
             {
                 throw new ArgumentNullException(nameof(options));
             }
+
             if (string.IsNullOrWhiteSpace(options.PrivateKey))
             {
                 throw new ArgumentNullException(nameof(options.PrivateKey));

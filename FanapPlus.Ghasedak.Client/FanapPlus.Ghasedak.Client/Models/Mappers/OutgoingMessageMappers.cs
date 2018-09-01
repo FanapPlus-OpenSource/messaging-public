@@ -54,7 +54,8 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 Content = item.Content,
                 MessageType = item.MessageType,
                 Priority = item.Priority,
-                ReplyTo = item.ReplyTo
+                ReplyTo = item.ReplyTo,
+                ExpirationTime = item.ExpirationTime.ToGhasedakFormatDateString()
             };
         }
     }
