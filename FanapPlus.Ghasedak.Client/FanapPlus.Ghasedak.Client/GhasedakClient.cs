@@ -41,7 +41,7 @@ namespace FanapPlus.Ghasedak.Client
         {
             var serializer = new JsonSerializer<GhasedakSendResponse>();
             message.SignWith(_config.PrivateKey);
-            var content = CreateContent(message);
+            var content = message.CreateContent();
 
             var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
 
@@ -70,13 +70,6 @@ namespace FanapPlus.Ghasedak.Client
             httpResponse.EnsureSuccessStatusCode();
         }
 
-        private static HttpContent CreateContent<T>(T message)
-        {
-            var serializer = new JsonSerializer<T>();
-
-            var content = new StringContent(serializer.SerializeToString(message), Encoding.UTF8, "application/json");
-
-            return content;
-        }
+        
     }
 }
