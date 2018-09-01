@@ -23,10 +23,6 @@ namespace FanapPlus.Ghasedak.Client
                 throw new ArgumentNullException(nameof(_config.BaseUrl));
             }
 
-            if (string.IsNullOrWhiteSpace(_config.PrivateKey))
-            {
-                throw new ArgumentNullException(nameof(_config.PrivateKey));
-            }
 
             if (!Uri.TryCreate(config.BaseUrl, UriKind.Absolute, out var baseAddressUri))
             {
@@ -37,10 +33,19 @@ namespace FanapPlus.Ghasedak.Client
         }
 
 
-        public async Task<GhasedakSendResponse> Send(GhasedakOutgoingMessageRequest message)
+        public async Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingMessageRequest message, GhasedakOptions options)
         {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+            if (string.IsNullOrWhiteSpace(options.PrivateKey))
+            {
+                throw new ArgumentNullException(nameof(options.PrivateKey));
+            }
+
             var serializer = new JsonSerializer<GhasedakSendResponse>();
-            message.SignWith(_config.PrivateKey);
+            message.SignWith(options.PrivateKey);
             var content = message.CreateContent();
 
             var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
