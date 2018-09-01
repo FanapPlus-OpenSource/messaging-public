@@ -58,6 +58,12 @@ namespace FanapPlus.Ghasedak.Client
             return ghasedakResponse;
 
         }
+
+        public async Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingMessageRequest message, string privateKey)
+        {
+            return await SendAsync(message, new GhasedakOptions {PrivateKey = privateKey});
+        }
+
         private async Task CheckSuccessStatusCodeAndThrowIfUnsuccessful(HttpResponseMessage httpResponse)
         {
             if (httpResponse.IsSuccessStatusCode)
