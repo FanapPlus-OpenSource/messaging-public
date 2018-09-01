@@ -5,21 +5,26 @@ using FanapPlus.Ghasedak.Client.Models.Outgoing;
 
 namespace FanapPlus.Ghasedak.Client.Models.Exensions
 {
-    public static class GhasedakMessagesExtensions
+    internal static class GhasedakMessagesExtensions
     {
-        public static void SignWith(this GhasedakMultipleOutgoingMessageRequest request, string key)
+        internal static void SignWith(this GhasedakOutgoingMessageRequest request, string key)
         {
-            request?.Messages?.ForEach(c =>
+            if (request?.Messages == null)
             {
-                c.Signature = SignText(string.Join(",",
+                return;
+            }
+
+            foreach (var message in request.Messages)
+            {
+                message.Signature = SignText(string.Join(",",
                     request.Date,
                     request.Uid,
-                    request.Sid,
-                    request.ChannelType.ToString(),
-                    request.MessageType.ToString(),
-                    c.AccountId,
-                    request.Content), key);
-            });
+                    message.Sid,
+                    message.ChannelType.ToString(),
+                    message.MessageType.ToString(),
+                    message.AccountId,
+                    message.Content), key);
+            }
         }
 
         private static string SignText(string signable, string privateKey)

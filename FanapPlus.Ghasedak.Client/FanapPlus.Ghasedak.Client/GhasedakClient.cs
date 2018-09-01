@@ -3,12 +3,12 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using FanapPlus.Ghasedak.Client.Models;
+using FanapPlus.Ghasedak.Client.Models.Exensions;
 using FanapPlus.Ghasedak.Client.Models.Outgoing;
-using FanapPlus.Sdp.Clients.Ghasedak.Models;
+using ServiceStack.Text;
 
 namespace FanapPlus.Ghasedak.Client
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
     public class GhasedakClient : IGhasedakClient
     {
         private readonly IGhasedakConfiguration _config;
@@ -20,12 +20,17 @@ namespace FanapPlus.Ghasedak.Client
 
             if (string.IsNullOrEmpty(config.BaseUrl))
             {
-                throw new ArgumentNullException(nameof(config.BaseUrl));
+                throw new ArgumentNullException(nameof(_config.BaseUrl));
+            }
+
+            if (string.IsNullOrWhiteSpace(_config.PrivateKey))
+            {
+                throw new ArgumentNullException(nameof(_config.PrivateKey));
             }
 
             if (!Uri.TryCreate(config.BaseUrl, UriKind.Absolute, out var baseAddressUri))
             {
-                throw new ArgumentException("invalid url format", nameof(config.BaseUrl));
+                throw new ArgumentException("invalid url format", nameof(_config.BaseUrl));
             }
 
             _httpClient = new HttpClient { BaseAddress = baseAddressUri };
@@ -35,7 +40,7 @@ namespace FanapPlus.Ghasedak.Client
         public async Task<GhasedakSendResponse> Send(GhasedakOutgoingMessageRequest message)
         {
             var serializer = new JsonSerializer<GhasedakSendResponse>();
-
+            message.SignWith(_config.PrivateKey);
             var content = CreateContent(message);
 
             var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
@@ -55,7 +60,12 @@ namespace FanapPlus.Ghasedak.Client
                 return;
             }
 
-            var errorString = await httpResponse.Content.ReadAsStringAsync();
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                var errorString = await httpResponse.Content.ReadAsStringAsync();
+                throw new Exception($"Error while callin ghasedak api: {errorString} \n\rHttpStatusCode: {httpResponse.StatusCode}");
+            }
+            
 
             httpResponse.EnsureSuccessStatusCode();
         }
