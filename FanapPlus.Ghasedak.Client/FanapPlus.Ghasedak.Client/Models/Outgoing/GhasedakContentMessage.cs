@@ -10,12 +10,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing
         public MessageType MessageType { get; set; }
         public ChannelType ChannelType { get; set; }
         public MessagePriority Priority { get; set; }
-        public DateTime ExpirationTime { get; set; }
+        public DateTime? ExpirationTime { get; set; }
         public string ReplyTo { get; set; }
-
-        public GhasedakContentMessage()
-        {
-            ExpirationTime = DateTime.UtcNow.AddMinutes(10);
-        }
     }
 }
