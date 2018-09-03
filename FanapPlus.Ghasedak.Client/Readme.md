@@ -4,7 +4,7 @@ Here you can find an .NET implementaion of Ghasedak API (version 5). To use it y
 
     IGhasedakClient client = new GhasedakClient(new GhasedakConfiguration());
     
-It receives an object that is inherited from `IGhasedakConfiguration` object. Here is it's simple implementation:
+It receives an object that is inherited from `IGhasedakConfiguration` interface. Here is it's simple implementation:
 
     public class GhasedakConfiguration : IGhasedakConfiguration
     {
