@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,12 @@ namespace FanapPlus.Ghasedak.Client
                 throw new ArgumentException("invalid url format", nameof(_config.BaseUrl));
             }
 
-            _httpClient = new HttpClient { BaseAddress = baseAddressUri };
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            };
+
+            _httpClient = new HttpClient(handler) { BaseAddress = baseAddressUri };
         }
 
 
