@@ -21,8 +21,8 @@ And you can use it like this:
         {
             new GhasedakContentMessage
             {
-                Sid = "Your ghasedak sid goes here",
-                AccountId = "Your accountId goes here",
+                Sid = "YourGhasedakSID",
+                AccountId = "UserAccountId",
                 ChannelType = ChannelType.Pardis,
                 Content = "My content goes hear",
                 MessageType = Ghasedak.Client.Models.MessageType.Content,
