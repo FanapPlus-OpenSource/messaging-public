@@ -73,6 +73,40 @@ namespace FanapPlus.Ghasedak.Client
             return await SendAsync(message, new GhasedakOptions {PrivateKey = privateKey});
         }
 
+
+        public async Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingBulkMessageRequest message, GhasedakOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            if (string.IsNullOrWhiteSpace(options.PrivateKey))
+            {
+                throw new ArgumentNullException(nameof(options.PrivateKey));
+            }
+
+            var serializer = new JsonSerializer<GhasedakSendResponse>();
+
+            var inlineMessage = message.MapToInlineGhasedakOutgoingBulkMessageRequest();
+            inlineMessage.SignWith(options.PrivateKey);
+            var content = inlineMessage.CreateContent();
+
+            var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
+
+            await CheckSuccessStatusCodeAndThrowIfUnsuccessful(httpResponse);
+
+            var ghasedakResponseString = await httpResponse.Content.ReadAsStringAsync();
+            var ghasedakResponse = serializer.DeserializeFromString(ghasedakResponseString);
+
+            return ghasedakResponse;
+        }
+
+        public async Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingBulkMessageRequest message, string privateKey)
+        {
+            return await SendAsync(message, new GhasedakOptions { PrivateKey = privateKey });
+        }
+
         private async Task CheckSuccessStatusCodeAndThrowIfUnsuccessful(HttpResponseMessage httpResponse)
         {
             if (httpResponse.IsSuccessStatusCode)

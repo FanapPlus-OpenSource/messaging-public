@@ -8,5 +8,7 @@ namespace FanapPlus.Ghasedak.Client
     {
         Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingMessageRequest message, GhasedakOptions options);
         Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingMessageRequest message, string privateKey);
+        Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingBulkMessageRequest message, GhasedakOptions options);
+        Task<GhasedakSendResponse> SendAsync(GhasedakOutgoingBulkMessageRequest message, string privateKey);
     }
 }
