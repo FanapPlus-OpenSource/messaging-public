@@ -8,6 +8,28 @@ namespace FanapPlus.Ghasedak.Client.Models.Exensions
 {
     internal static class GhasedakMessagesExtensions
     {
+
+        internal static void SignWith(this InlineGhasedakOutgoingBulkMessageRequest request, string key)
+        {
+            if (request?.Messages == null)
+            {
+                return;
+            }
+
+            foreach (var message in request.Messages)
+            {
+                message.Signature = SignText(string.Join(",",
+                    request.Date,
+                    request.Uid,
+                    request.Sid,
+                    request.ChannelType.ToString(),
+                    request.MessageType.ToString(),
+                    message.AccountId,
+                    request.Content), key);
+            }
+        }
+
+
         internal static void SignWith(this InlineGhasedakOutgoingMessageRequest request, string key)
         {
             if (request?.Messages == null)
