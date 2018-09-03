@@ -1,4 +1,4 @@
-# A .NET implementaion of Ghasedak API
+# A .NET Implementaion of Ghasedak API
 
 Here you can find an .NET implementaion of Ghasedak API (version 5). To use it you must create an instance of `GhasedakClient`:
 
@@ -31,3 +31,7 @@ And you can use it like this:
         }
     };
     var result = await client.SendAsync(outgoingMultipleMessage, "YourGhasedakPrivateKey");
+
+# Nuget Package
+
+	Install-Package FanapPlus.Ghasedak.Client
