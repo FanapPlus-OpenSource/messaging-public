@@ -52,7 +52,7 @@
 
 <p lang="fa" dir="rtl" align="right" style="display:block;"><br/>در صورتی که متقاضی دریافت شماره کاربر هستندinput،  مقادیر زیر نیز ارسال می گردد:</p>
 
-<table align="right" style="width:100%" dir="ltr">  
+<table align="right" style="width:100%" dir="rtl">  
 <tr><th>توضیحات</th><th>نام پارامتر</th></tr>  
 <tr>
 <td><p lang="fa" dir="rtl" align="right">شماره تلفن کاربر</td>
