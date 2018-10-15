@@ -9,57 +9,79 @@
 
 <h2 lang="fa" dir="rtl" align="right">Http request body</h2>
 <p lang="fa" dir="rtl" align="right">بدنه پیام دارای object ی به فرمت آرایه ای تک عضوی از پارامترهای زیر است:</p>
-<table align="right" style="width:100%" dir="ltr">  
-<tr><th>توضیحات</th><th>نام پارامتر</th></tr>  
+<div style="width: 100%">
+<table align="left" style="max-width:50%">  
 <tr>
-<td><p lang="fa" dir="rtl" align="right">شناسه منحصر به فردی که توسط پیام رسان فناپ پلاس به پیام اختصاص داده شده است</td>
+<th>Parameter Name</th><th>Description</th></tr>  
+<tr>
 <td>Muid</td>
+<td><p lang="fa" dir="rtl" align="right">شناسه منحصر به فردی که توسط پیام رسان فناپ پلاس به پیام اختصاص داده شده است</td>
 </tr>
 <tr>
-<td><p lang="fa" dir="rtl" align="right">زمان دریافت پیام توسط سامانه؛ <br/><a href="https://ticket.fanap.plus/portal">Iso 8601</a>؛ universal time به فرمت:  <br/> "yyyy-MM-ddTHH:mm:ss.fffZ"</td>
 <td>ReceiveTime</td>
+<td><p lang="fa" dir="rtl" align="right">زمان دریافت پیام توسط سامانه؛
+ <br/><a href="https://ticket.fanap.plus/portal">Iso 8601</a>؛ universal time به فرمت:  
+ <br/> "yyyy-MM-ddTHH:mm:ss.fffZ"</td>
 </tr> 
 <tr>
-<td><p lang="fa" dir="rtl" align="right">شناسه کاربر</td>
 <td>AccountId</td>
+<td><p lang="fa" dir="rtl" align="right">شناسه کاربر</td>
 </tr>
 <tr>
-<td><p lang="fa" dir="rtl" align="right">درگاهی که پیام کاربر از آن دریافت شده است، شامل مقادیر:<br/>Pardis،<br/> Imi،<br/> Mtn،<br/> Rightel،<br/> Magfa<br/>است.</td><td>ChannelType</td>
+<td>ChannelType</td>
+<td><p lang="fa" dir="rtl" align="right">درگاهی که پیام کاربر از آن دریافت شده است، شامل مقادیر:
+<br/>Pardis،
+<br/> Imi،
+<br/> Mtn،
+<br/> Rightel،
+<br/> Magfa
+<br/>است.
+</td>
 </tr>
-<tr><td><p lang="fa" dir="rtl" align="right">سرشماره ای که پیام کاربر از آن دریافت شده است.</td><td>Channel</td>
+<td>Channel</td>
+<td><p lang="fa" dir="rtl" align="right">سرشماره ای که پیام کاربر از آن دریافت شده است.</td>
+<tr>
 </tr>
 <tr>
-<td><p lang="fa" dir="rtl" align="right">عامل پیام دریافتی که دارای مقادیر:<br/>Sms،<br/>Cp،<br/>Tajmi،<br/>Ussd،<br/>Operator،<br/>Hamrahman<br/>است.
-</td><td>Actor</td>
+<td>Actor</td>
+<td><p lang="fa" dir="rtl" align="right">عامل پیام دریافتی که دارای مقادیر:<br/>Sms،
+<br/>Cp،
+<br/>Tajmi،
+<br/>Ussd،
+<br/>Operator،
+<br/>Hamrahman
+<br/>است.
+</td>
 </tr>
 <tr>  
-<td><p lang="fa" dir="rtl" align="right">نوع پیام دریافتی که دارای مقادیر:<br/>Content،<br/>Subscription،<br/>Unsubscription،<br/>PremiumContent،<br/>SubscriptionQueryResult<br/>است.</td>  
 <td>MessageType</td>
+<td><p lang="fa" dir="rtl" align="right">نوع پیام دریافتی که دارای مقادیر:<br/>Content،<br/>Subscription،<br/>Unsubscription،<br/>PremiumContent،<br/>SubscriptionQueryResult<br/>است.</td>  
 </tr>
 <tr>  
-<td><p lang="fa" dir="rtl" align="right">متن پیام ارسال شده توسط کاربر</td>  
-<td>Content</td>  
+<td>Content</td>
+<td><p lang="fa" dir="rtl" align="right">متن پیام ارسال شده توسط کاربر</td>    
 </tr>
 <tr>  
-<td><p lang="fa" dir="rtl" align="right">شناسه منحصر به فرد مشتری که توسط شرکت فناپ پلاس در اختیار مشتری قرار گرفته و به منظور شناسایی مشتری از آن استفاده میکند.</td>  
-<td>Sid</td>  
+<td>Sid</td> 
+<td><p lang="fa" dir="rtl" align="right">شناسه منحصر به فرد مشتری که توسط شرکت فناپ پلاس در اختیار مشتری قرار گرفته و به منظور شناسایی مشتری از آن استفاده میکند.</td>   
 </tr>
 <tr>  
-<td><p lang="fa" dir="rtl" align="right">پیام امضا شده توسط شرکت فناپ پلاس.</td>  
-<td>Muid</td>  
+<td>Signature</td>
+<td><p lang="fa" dir="rtl" align="right">پیام امضا شده توسط شرکت فناپ پلاس.</td>
 </tr>
 </table>
+</div>
 
-<p lang="fa" dir="rtl" align="right" style="display:block;"><br/>در صورتی که متقاضی دریافت شماره کاربر هستندinput،  مقادیر زیر نیز ارسال می گردد:</p>
-
-<table align="right" style="width:100%" dir="rtl">  
-<tr><th>توضیحات</th><th>نام پارامتر</th></tr>  
+<br/><br/>
+<p lang="fa" dir="rtl" align="right"><br/><b>در صورتی که متقاضی دریافت شماره کاربر هستندinput،  مقادیر زیر نیز ارسال می گردد:</p>
+<table align="left" style="width:50%">  
+<tr>
+<th>Parameter Name</th><th>Description</th></tr>  
 <tr>
 <td><p lang="fa" dir="rtl" align="right">شماره تلفن کاربر</td>
 <td>UserPhoneNumber</td>
 </tr>
 </table>
-
 
 <h2 lang="fa" dir="rtl" align="right"><br/><br/><br/><br/>مثال</h2>
 <pre><code>[
