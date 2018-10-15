@@ -38,6 +38,7 @@
 <br/>است.
 </td>
 </tr>
+	<tr>
 <td>Channel</td>
 <td><p lang="fa" dir="rtl" align="right">سرشماره ای که پیام کاربر از آن دریافت شده است.</td>
 <tr>
