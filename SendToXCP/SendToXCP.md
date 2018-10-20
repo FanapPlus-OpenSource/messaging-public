@@ -1,4 +1,5 @@
 
+
   ![FanapPlus Logo](https://user-images.githubusercontent.com/32090767/46914639-244b3300-cfad-11e8-95ca-8e574ceb31fb.png)
 
 
@@ -9,7 +10,7 @@
 
 <h2 lang="fa" dir="rtl" align="right">Http request body</h2>
 <p lang="fa" dir="rtl" align="right">بدنه پیام دارای object ی به فرمت آرایه ای تک عضوی از پارامترهای زیر است:</p>
-<div style="width: 100%">
+<div style="width: 50%">
 <table align="left" style="max-width:50%">  
 <tr>
 <th>Parameter Name</th><th>Description</th></tr>  
@@ -68,7 +69,7 @@
 </tr>
 <tr>  
 <td>Signature</td>
-<td><p lang="fa" dir="rtl" align="right">پیام امضا شده توسط شرکت فناپ پلاس.</td>
+<td><p lang="fa" dir="rtl" align="right">پیام امضا شده توسط شرکت فناپ پلاس</td>
 </tr>
 </table>
 </div>
@@ -84,8 +85,11 @@
 </tr>
 </table>
 
-<h2 lang="fa" dir="rtl" align="right"><br/><br/><br/><br/>مثال</h2>
-<pre><code>[
+
+<h4 lang="fa" dir="rtl" align="right"><br/><br/><br/><br/>مثال</h4>
+
+```json
+[
 	{
 		“Muid”: “74c925a6211f483fafb29650feb821c7”,
 		“Sid”: ” d45987d89490432990f4af64ee2c3cd6”,
@@ -99,4 +103,160 @@
 		“Content”: “test”,
 		Signature: LSrRlM9Jh8HA9C6WtOZHXiRd4jt24vpALJr4FFvhda4TA2A4MO+xYtm93bxUcI3LANHDd5fMs2ruRUqAadBxpDWRG+AVOLDR8uQHOyRNszvUYKdoDnnahRx6f3GI0abx6Lw1xUxzSUTr1Dk6PywllkVL2pmbaM6mL5PR+tBO2Ps=
 	}
-]</​code></​pre>
+]
+```
+<h2 lang="fa" dir="rtl" align="right">توضیحات فیلد ها</h2>
+<h3 lang="fa" dir="rtl" align="right">MessageType : </h3>
+<p lang="fa" dir="rtl" align="right">نوع پیام دریافتی دارای یکی از مقادیر زیر است :</p>
+
+<div style="width: 50%">
+<table align="left" style="width:100%">  
+<tr>
+<th>Parameter Value</th><th>Description</th></tr>  
+<tr>
+<td>Content</td>
+<td><p lang="fa" dir="rtl" align="right">عادی</td>
+</tr>
+<tr>
+<td>Subscription</td>
+<td><p lang="fa" dir="rtl" align="right">عضویت</td>
+</tr>
+<tr>
+<td>unSubscription</td>
+<td><p lang="fa" dir="rtl" align="right">لغو عضویت</td>
+</tr>
+<tr>
+<td>PremiumContent</td>
+<td><p lang="fa" dir="rtl" align="right">پیام پولی</td>
+</tr>
+<tr>
+<td>SubscriptionQueryResult</td>
+<td><p lang="fa" dir="rtl" align="right">پاسخ بررسی عضویت کاربر</td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3 lang="fa" dir="rtl" align="right">Content : </h3>
+<p lang="fa" dir="rtl" align="right"> در صورتی که نوع پیام دریافتی SubscriptionQueryResult باشد، محتوا، یک آبجکت JSON با پراپرتی های زیر است:</p>
+
+<table align="left" style="width:100%">  
+<tr>
+<th>Parameter Value</th><th>Description</th></tr>  
+<tr>
+<td>Muid</td>
+<td><p lang="fa" dir="rtl" align="right">شناسه پیام ارسالی بررسی عضویت کاربر</td>
+</tr>
+<tr>
+<td>Result</td>
+<td><p lang="fa" dir="rtl" align="right">نتیجه بررسی</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+<p lang="fa" dir="rtl" align="right">مقدار Result در صورتی که کاربر عضو سرویس باشد True و در صورتی که عضو نباشد False است.</p>
+<h4 lang="fa" dir="rtl" align="right">مثال :</h4>
+
+```json
+{"Muid":"1a3db98cf9b547a7a903e5b8c200824b","Result":"True"}
+```
+<h3 lang="fa" dir="rtl" align="right">Actor: </h3>
+<p lang="fa" dir="rtl" align="right">عامل پیام دریافتی دارای یکی از مقادیر زیر است :<br>
+کلیه عملیات کاربر غیر از کانال اس ام اس نیز برای مشتری ارسال میشود .</p>
+
+<table align="left" style="width:100%">  
+<tr>
+<th>Parameter Value</th><th>Description</th></tr>  
+<tr>
+<td>Sms</td>
+<td><p lang="fa" dir="rtl" align="right">ارسال پیامک</td>
+</tr>
+<tr>
+<td>Cp</td>
+<td><p lang="fa" dir="rtl" align="right">درخواست مشتری</td>
+</tr>
+<tr>
+<td>Tajmi</td>
+<td><p lang="fa" dir="rtl" align="right">پنل تجمیعی</td>
+</tr>
+<tr>
+<td>USSD</td>
+<td><p lang="fa" dir="rtl" align="right">سامانه USSD</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td><p lang="fa" dir="rtl" align="right">اپراتور</td>
+</tr>
+<tr>
+<td>Hamrahman</td>
+<td><p lang="fa" dir="rtl" align="right">همراه من</td>
+</tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h4 lang="fa" dir="rtl" align="right">مثال :</h4>
+<p lang="fa" dir="rtl" align="right"></p>
+<ul lang="fa" dir="rtl" align="right">  
+<li>عضویت بر روی سرویس از طریق اپ مشتری و ارسال OTP توسط کاربر:</li>  
+<ul>
+<li> Actor : CP</li>
+<li>MessageType : Subscription</li>
+</ul>
+<li>لغو عضویت بر روی سرویس از طریق درخواست مشتری :</li>  
+<ul>
+<li> Actor : CP</li>
+<li>MessageType : Unsubscription</li>
+</ul><li>لغو عضویت کاربر از طریق پنل تجمیعی :</li>  
+<ul>
+<li> Actor : Tajmi</li>
+<li>MessageType : Unsubscription</li>
+</ul><li>لغو عضویت از طریق کال سنتر اپراتور :</li>  
+<ul>
+<li> Actor : Operator</li>
+<li>MessageType : Unsubscription</li>
+</ul>
+</ul>
+<h3 lang="fa" dir="rtl" align="right">Signature: </h3>
+<p lang="fa" dir="rtl" align="right">برای احراز هویت و اثبات صحت پیام می­باشد. فناپ پلاس با توجه به پارامترهای بدنه­ ی پیام ، پیام فرمت شده ­ای را می­سازد که همان پیام را توسط کلید خصوصی خود امضا می­کند و در پارامتر Signature قرار می­دهد . شرکت خصوصی محتوای این پیام را با کلید عمومی فناپ پلاس واقع در <a href="https://github.com/appson/messaging-public/blob/master/Signature-PublicKey/publicKey.txt">این آدرس </a>رمزگشایی می­کند. </p>
+<p lang="fa" dir="rtl" align="right">پیام فرمت شده بدین ترتیب ایجاد شده است  : <br>( توضیح آنکه، مقادیر داخل براکت با توجه به مقادیر پارامترهای نظیر در بدنه ی پیام به صورت جدا شده با ویرگول،   پر می شوند و ترتیب از چپ به راست حتما رعایت شود ):</p>
+
+```json
+[ReceiveTime],[Sid],[ChannelType],[Channel],[Muid],[Content],[MessageType],[AccountId]
+```
+<p lang="fa" dir="rtl" align="right"> شرکت فناپ پلاس منتظر پاسخ فراخوانی مشتری نمی ماند و در صورتی که مشتری قصد ارسال پیام به کاربر را دارد باید وب سرویس ارسال پیام به مشتری پیاده سازی شود و از طریق آن پیام ها ارسال شود. سرویس ارسال پیام به مشتری نیازمند یک کلید نامتقارن است که برای امضا و احراز هویت مشتری مورد استفاده قرار میگیرد، بنابراین کلید عمومی آن در فرمت XML باید در اختیار شرکت فناپ پلاس قرار بگیرد.</p>
+
+<h2 lang="fa" dir="rtl" align="right">پیوست ۱</h2>
+<p lang="fa" dir="rtl" align="right">نحوه  sign  کردن  فناپ پلاس  :</p>
+<p lang="fa" dir="rtl" align="right">الگوریتم مورد استفاده برای  asymmetric cryptography  ، الگوریتم  RSA  است  که الگوریتم  hash  آن نیز  SHA1  است نمونه کد در زیر آمده است.</p>
+
+```json
+public static string Sign(string key, string text)
+	{
+		using (var rsaProvider = new RSACryptoServiceProvider(CspParams))
+		{
+			rsaProvider.FromXmlString(key);
+			var plainBytes = Encoding.UTF8.GetBytes(text);
+			var encryptedBytes = rsaProvider.SignData(plainBytes, new SHA1CryptoServiceProvider());
+			return Convert.ToBase64String(encryptedBytes);
+		}
+	}
+```
