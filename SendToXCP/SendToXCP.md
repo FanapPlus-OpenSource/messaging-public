@@ -88,7 +88,7 @@
 
 <h4 lang="fa" dir="rtl" align="right"><br/><br/><br/><br/>مثال</h4>
 
-```json
+```
 [
 	{
 		“Muid”: “74c925a6211f483fafb29650feb821c7”,
@@ -248,7 +248,7 @@
 <p lang="fa" dir="rtl" align="right">نحوه  sign  کردن  فناپ پلاس  :</p>
 <p lang="fa" dir="rtl" align="right">الگوریتم مورد استفاده برای  asymmetric cryptography  ، الگوریتم  RSA  است  که الگوریتم  hash  آن نیز  SHA1  است نمونه کد در زیر آمده است.</p>
 
-```json
+```
 public static string Sign(string key, string text)
 	{
 		using (var rsaProvider = new RSACryptoServiceProvider(CspParams))
