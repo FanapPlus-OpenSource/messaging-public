@@ -88,7 +88,7 @@
 
 <h4 lang="fa" dir="rtl" align="right"><br/><br/><br/><br/>مثال</h4>
 
-```
+<pre><code class="prettyprint">
 [
 	{
 		“Muid”: “74c925a6211f483fafb29650feb821c7”,
@@ -104,7 +104,8 @@
 		Signature: LSrRlM9Jh8HA9C6WtOZHXiRd4jt24vpALJr4FFvhda4TA2A4MO+xYtm93bxUcI3LANHDd5fMs2ruRUqAadBxpDWRG+AVOLDR8uQHOyRNszvUYKdoDnnahRx6f3GI0abx6Lw1xUxzSUTr1Dk6PywllkVL2pmbaM6mL5PR+tBO2Ps=
 	}
 ]
-```
+</pre></code>
+
 <h2 lang="fa" dir="rtl" align="right">توضیحات فیلد ها</h2>
 <h3 lang="fa" dir="rtl" align="right">MessageType : </h3>
 <p lang="fa" dir="rtl" align="right">نوع پیام دریافتی دارای یکی از مقادیر زیر است :</p>
@@ -177,9 +178,10 @@
 <p lang="fa" dir="rtl" align="right">مقدار Result در صورتی که کاربر عضو سرویس باشد True و در صورتی که عضو نباشد False است.</p>
 <h4 lang="fa" dir="rtl" align="right">مثال :</h4>
 
-```json
+<pre><code class="prettyprint">
 {"Muid":"1a3db98cf9b547a7a903e5b8c200824b","Result":"True"}
-```
+</pre></code>
+
 <h3 lang="fa" dir="rtl" align="right">Actor: </h3>
 <p lang="fa" dir="rtl" align="right">عامل پیام دریافتی دارای یکی از مقادیر زیر است :<br>
 کلیه عملیات کاربر غیر از کانال اس ام اس نیز برای مشتری ارسال میشود .</p>
@@ -239,24 +241,54 @@
 <p lang="fa" dir="rtl" align="right">برای احراز هویت و اثبات صحت پیام می­باشد. فناپ پلاس با توجه به پارامترهای بدنه­ ی پیام ، پیام فرمت شده ­ای را می­سازد که همان پیام را توسط کلید خصوصی خود امضا می­کند و در پارامتر Signature قرار می­دهد . شرکت خصوصی محتوای این پیام را با کلید عمومی فناپ پلاس واقع در <a href="https://github.com/appson/messaging-public/blob/master/Signature-PublicKey/publicKey.txt">این آدرس </a>رمزگشایی می­کند. </p>
 <p lang="fa" dir="rtl" align="right">پیام فرمت شده بدین ترتیب ایجاد شده است  : <br>( توضیح آنکه، مقادیر داخل براکت با توجه به مقادیر پارامترهای نظیر در بدنه ی پیام به صورت جدا شده با ویرگول،   پر می شوند و ترتیب از چپ به راست حتما رعایت شود ):</p>
 
-```
+<code class="prettyprint">
 [ReceiveTime],[Sid],[ChannelType],[Channel],[Muid],[Content],[MessageType],[AccountId]
-```
-<p lang="fa" dir="rtl" align="right"> شرکت فناپ پلاس منتظر پاسخ فراخوانی مشتری نمی ماند و در صورتی که مشتری قصد ارسال پیام به کاربر را دارد باید وب سرویس ارسال پیام به مشتری پیاده سازی شود و از طریق آن پیام ها ارسال شود. سرویس ارسال پیام به مشتری نیازمند یک کلید نامتقارن است که برای امضا و احراز هویت مشتری مورد استفاده قرار میگیرد، بنابراین کلید عمومی آن در فرمت XML باید در اختیار شرکت فناپ پلاس قرار بگیرد.</p>
+</code>
+<p lang="fa" dir="rtl" align="right"> شرکت فناپ پلاس منتظر پاسخ فراخوانی مشتری نمی ماند و در صورتی که مشتری قصد ارسال پیام به کاربر را دارد باید وب سرویس ارسال پیام به مشتری پیاده سازی شود و از طریق آن پیام ها ارسال شود. سرویس ارسال پیام به مشتری نیازمند یک کلید نامتقارن است که برای امضا و احراز هویت مشتری مورد استفاده قرار میگیرد، بنابراین کلید عمومی آن در فرمت XML باید در اختیار شرکت فناپ پلاس قرار بگیرد.</p><br>
 
 <h2 lang="fa" dir="rtl" align="right">پیوست ۱</h2>
 <p lang="fa" dir="rtl" align="right">نحوه  sign  کردن  فناپ پلاس  :</p>
-<p lang="fa" dir="rtl" align="right">الگوریتم مورد استفاده برای  asymmetric cryptography  ، الگوریتم  RSA  است  که الگوریتم  hash  آن نیز  SHA1  است نمونه کد در زیر آمده است.</p>
+<p lang="fa" dir="rtl" align="right">الگوریتم مورد استفاده برای  asymmetric cryptography  ، الگوریتم  RSA  است  که الگوریتم  hash  آن نیز  SHA1  است نمونه کد در زیر آمده است.</p><br>
 
-```
+<pre><code class="prettyprint">
 public static string Sign(string key, string text)
+{
+	using (var rsaProvider = new RSACryptoServiceProvider(CspParams))
 	{
-		using (var rsaProvider = new RSACryptoServiceProvider(CspParams))
-		{
-			rsaProvider.FromXmlString(key);
-			var plainBytes = Encoding.UTF8.GetBytes(text);
-			var encryptedBytes = rsaProvider.SignData(plainBytes, new SHA1CryptoServiceProvider());
-			return Convert.ToBase64String(encryptedBytes);
-		}
+		rsaProvider.FromXmlString(key);
+		var plainBytes = Encoding.UTF8.GetBytes(text);
+		var encryptedBytes = rsaProvider.SignData(plainBytes, new SHA1CryptoServiceProvider());
+		return Convert.ToBase64String(encryptedBytes);
 	}
-```
+}
+</pre></code>
+
+<h2 lang="fa" dir="rtl" align="right">پیوست ۲</h2>
+<p lang="fa" dir="rtl" align="right">نمونه کد احراز هویت  :</p><br>
+
+<pre><code class="prettyprint">
+public static bool Check(string key, string signedText, string text)
+{
+	if (string.IsNullOrWhiteSpace(text)) return false;
+	try
+	{
+		// Select target CSP
+		var cspParams = new CspParameters { ProviderType = 1 };
+		// PROV_RSA_FULL
+		//cspParams.ProviderName; // CSP name
+		var rsaProvider = new RSACryptoServiceProvider(cspParams);
+		// Import private/public key pair
+		rsaProvider.FromXmlString(key);
+		var encryptedBytes = Convert.FromBase64String(signedText);
+		var plainInput = Encoding.UTF8.GetBytes(text);
+		// Decrypt text
+		var check = rsaProvider.VerifyData(plainInput, new SHA1CryptoServiceProvider(), encryptedBytes);
+		return check;
+	}
+	catch (Exception exception)
+	{
+		Log.Error(exception.Message, exception);
+		return false;
+	}
+}
+</pre></code>
