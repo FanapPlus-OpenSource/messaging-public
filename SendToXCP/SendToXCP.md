@@ -5,7 +5,7 @@
 
 
 <h1 lang="fa" dir="rtl" align="right">ارسال پیام دریافتی ازکاربر به اکسترنال CP</h1>
-<p lang="fa" dir="rtl" align="right">برای دریافت پیام کاربر، باید یک POST API بر روی پروتکل htpp وجود داشته باشد. این آدرس Api باید توسط یک <a href="https://ticket.fanap.plus/portal">تیکت</a> در اختیار شرکت فناپ پلاس قرار بگیرد.<br/>
+<p lang="fa" dir="rtl" align="right">برای دریافت پیام کاربر، باید یک POST API بر روی پروتکل http وجود داشته باشد. این آدرس Api باید توسط یک <a href="https://ticket.fanap.plus/portal">تیکت</a> در اختیار شرکت فناپ پلاس قرار بگیرد.<br/>
 پس ازدریافت پیام کاربر  ,سامانه پیام رسان فناپ پلاس, اطلاعات زیر را در اختیار  شرکت مشتری قرار می دهد.</p>
 
 <h2 lang="fa" dir="rtl" align="right">Http request body</h2>
