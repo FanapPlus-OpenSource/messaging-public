@@ -10,7 +10,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing
         {
             Uid = Guid.NewGuid().ToString("N");
             Date = DateTime.UtcNow;
-            
+            Tags = new List<string>();
         }
         public string Sid { get; set; }
         public string Content { get; set; }
@@ -20,6 +20,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing
         public DateTime? ExpirationTime { get; set; }
         public string Uid { get; set; }
         public DateTime Date { get; set; }
+        public List<string> Tags { get; set; }
         public IEnumerable<GhasedakContentBulkMessage> Messages { get; set; }
     }
 }

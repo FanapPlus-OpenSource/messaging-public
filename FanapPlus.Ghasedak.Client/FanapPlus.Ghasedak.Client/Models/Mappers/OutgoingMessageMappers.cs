@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using FanapPlus.Ghasedak.Client.Models.Exensions;
 using FanapPlus.Ghasedak.Client.Models.Outgoing;
@@ -46,7 +47,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
         internal static InlineGhasedakContentMessage ToInlineGhasedakContentMessage(
             this GhasedakContentMessage item)
         {
-            return new InlineGhasedakContentMessage
+            var result =  new InlineGhasedakContentMessage
             {
                 Sid = item.Sid,
                 AccountId = item.AccountId,
@@ -55,8 +56,15 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 MessageType = item.MessageType,
                 Priority = item.Priority,
                 ReplyTo = item.ReplyTo,
-                ExpirationTime = item.ExpirationTime?.ToGhasedakFormatDateString()
+                ExpirationTime = item.ExpirationTime?.ToGhasedakFormatDateString(),
             };
+
+            if (item.Tags != null && item.Tags.Any())
+            {
+                result.Tags = item.Tags;
+            }
+
+            return result;
         }
     }
 }

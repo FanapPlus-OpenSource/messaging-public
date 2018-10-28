@@ -1,4 +1,6 @@
-﻿namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
+﻿using System.Collections.Generic;
+
+namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
 {
     internal class InlineGhasedakContentMessage
     {
@@ -11,5 +13,6 @@
         public string ExpirationTime { get; set; }
         public string ReplyTo { get; set; }
         public string Signature { get; set; }
+        public List<string> Tags { get; set; }
     }
 }

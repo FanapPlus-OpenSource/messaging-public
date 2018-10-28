@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FanapPlus.Ghasedak.Client.Models.Exensions;
 using FanapPlus.Ghasedak.Client.Models.Outgoing;
 using FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels;
@@ -13,12 +12,9 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
         internal static InlineGhasedakOutgoingBulkMessageRequest MapToInlineGhasedakOutgoingBulkMessageRequest(
             this GhasedakOutgoingBulkMessageRequest request)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
 
-            return new InlineGhasedakOutgoingBulkMessageRequest
+            var result = new InlineGhasedakOutgoingBulkMessageRequest
             {
                 Date = request.Date.ToGhasedakFormatDateString(),
                 Uid = request.Uid,
@@ -29,17 +25,20 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 Priority = request.Priority,
                 ExpirationTime = request.ExpirationTime?.ToGhasedakFormatDateString(),
                 Messages = request.Messages.ToInlineGhasedakContentBulkMessage()
+            };
 
-    };
+            if (request.Tags != null && request.Tags.Any())
+            {
+                result.Tags = request.Tags;
+            }
+
+            return result;
         }
 
         internal static IEnumerable<InlineGhasedakContentBulkMessage> ToInlineGhasedakContentBulkMessage(
             this IEnumerable<GhasedakContentBulkMessage> items)
         {
-            if (items == null)
-            {
-                throw new ArgumentNullException(nameof(items));
-            }
+            if (items == null) throw new ArgumentNullException(nameof(items));
 
             return items.Select(item => item.ToInlineGhasedakContentBulkMessage()).ToList();
         }
@@ -52,6 +51,5 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 AccountId = item.AccountId
             };
         }
-
     }
 }
