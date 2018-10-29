@@ -5,6 +5,9 @@
         Content,
         PremiumContent,
         Subscription,
-        Unsubscription
+        Unsubscription,
+        Verification,
+        Charge,
+        SubscriptionQuery
     }
 }
