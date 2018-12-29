@@ -56,6 +56,8 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 MessageType = item.MessageType,
                 Priority = item.Priority,
                 ReplyTo = item.ReplyTo,
+                UserPhoneNumber = item.UserPhoneNumber,
+                SyncDeliveryTimeout = item.SyncDeliveryTimeout,
                 ExpirationTime = item.ExpirationTime?.ToGhasedakFormatDateString(),
             };
 

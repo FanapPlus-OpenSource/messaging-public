@@ -45,7 +45,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Exensions
                     message.Sid,
                     message.ChannelType.ToString(),
                     message.MessageType.ToString(),
-                    message.AccountId,
+                    message.AccountId ?? message.UserPhoneNumber,
                     message.Content), key);
             }
         }
