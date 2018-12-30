@@ -5943,9 +5943,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\git\\messaging-public\\FanapPlus.Ghasedak.Client\\FanapPlus.Ghasedak.Client.Tests\\FanapPlus.Ghasedak.Client.Tests.csproj",
       "projectName": "FanapPlus.Ghasedak.Client.Tests",
@@ -5987,32 +5984,33 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "xunit.runner.visualstudio": {
+          "Microsoft.NET.Test.Sdk": {
             "target": "Package",
-            "version": "2.3.1"
+            "version": "[15.8.0, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           },
           "ServiceStack.Text.Core": {
             "target": "Package",
-            "version": "5.2.0"
+            "version": "[5.2.0, )"
           },
           "xunit": {
             "target": "Package",
-            "version": "2.3.1"
-          },
-          "Microsoft.NET.Test.Sdk": {
-            "target": "Package",
-            "version": "15.8.0"
+            "version": "[2.3.1, )"
           },
           "xunit.runner.console": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers",
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.4.1"
+            "version": "[2.4.1, )"
+          },
+          "xunit.runner.visualstudio": {
+            "target": "Package",
+            "version": "[2.3.1, )"
           }
         },
         "imports": [
