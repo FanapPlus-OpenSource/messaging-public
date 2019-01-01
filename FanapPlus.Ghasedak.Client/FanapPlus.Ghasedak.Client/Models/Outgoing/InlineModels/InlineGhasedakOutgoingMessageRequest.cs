@@ -7,5 +7,6 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
         public string Uid { get; set; }
         public string Date { get; set; }
         public IEnumerable<InlineGhasedakContentMessage> Messages { get; set; }
+        public string SyncDeliveryTimeout { get; set; }
     }
 }

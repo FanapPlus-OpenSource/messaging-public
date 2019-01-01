@@ -56,11 +56,10 @@ namespace FanapPlus.Ghasedak.Client.Tests
                 {
                     Date = DateTime.UtcNow,
                     Uid = Guid.NewGuid().ToString("N"),
-
+                    SyncDeliveryTimeout = "10000",
                     Messages = new List<GhasedakContentMessage> {
                         new GhasedakContentMessage
                         {
-                            SyncDeliveryTimeout = 10000,
                             UserPhoneNumber = "YourPhone",
                             ChannelType = ChannelType.Pardis,
                             Priority = MessagePriority.High,

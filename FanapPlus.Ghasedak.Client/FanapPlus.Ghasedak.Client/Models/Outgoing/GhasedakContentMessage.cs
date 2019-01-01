@@ -19,6 +19,5 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing
         public string ReplyTo { get; set; }
         public List<string> Tags { get; set; }
         public string UserPhoneNumber { get; set; }
-        public long? SyncDeliveryTimeout { get; set; }
     }
 }
