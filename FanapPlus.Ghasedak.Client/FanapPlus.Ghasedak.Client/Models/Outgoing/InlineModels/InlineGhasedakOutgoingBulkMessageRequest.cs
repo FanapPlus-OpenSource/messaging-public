@@ -15,6 +15,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
         public string ExpirationTime { get; set; }
         public string Uid { get; set; }
         public string Date { get; set; }
+        public string AppId { get; set; }
         public IEnumerable<InlineGhasedakContentBulkMessage> Messages { get; set; }
         public List<string> Tags { get; set; }
     }

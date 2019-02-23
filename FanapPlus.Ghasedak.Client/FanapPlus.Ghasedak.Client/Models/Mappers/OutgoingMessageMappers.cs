@@ -23,6 +23,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 Date = request.Date.ToGhasedakFormatDateString(),
                 Uid = request.Uid,
                 SyncDeliveryTimeout = request.SyncDeliveryTimeout,
+                AppId = request.AppId,
                 Messages = request.Messages.ToInlineGhasedakContentMessage(),
             };
         }
@@ -58,6 +59,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 Priority = item.Priority,
                 ReplyTo = item.ReplyTo,
                 UserPhoneNumber = item.UserPhoneNumber,
+                AppId = item.AppId,
                 ExpirationTime = item.ExpirationTime?.ToGhasedakFormatDateString(),
             };
 

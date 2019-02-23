@@ -21,6 +21,7 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing
         public string Uid { get; set; }
         public DateTime Date { get; set; }
         public List<string> Tags { get; set; }
+        public string AppId { get; set; }
         public IEnumerable<GhasedakContentBulkMessage> Messages { get; set; }
     }
 }

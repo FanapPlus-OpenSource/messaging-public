@@ -24,7 +24,8 @@ namespace FanapPlus.Ghasedak.Client.Models.Mappers
                 MessageType = request.MessageType,
                 Priority = request.Priority,
                 ExpirationTime = request.ExpirationTime?.ToGhasedakFormatDateString(),
-                Messages = request.Messages.ToInlineGhasedakContentBulkMessage()
+                Messages = request.Messages.ToInlineGhasedakContentBulkMessage(),
+                AppId = request.AppId
             };
 
             if (request.Tags != null && request.Tags.Any())

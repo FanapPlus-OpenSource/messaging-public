@@ -16,5 +16,6 @@ namespace FanapPlus.Ghasedak.Client.Models.Outgoing.InlineModels
         public List<string> Tags { get; set; }
         public string UserPhoneNumber { get; internal set; }
         public long? SyncDeliveryTimeout { get; set; }
+        public string AppId { get; set; }
     }
 }
