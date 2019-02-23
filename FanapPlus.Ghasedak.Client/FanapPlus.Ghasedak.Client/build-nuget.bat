@@ -1,1 +1,1 @@
-dotnet pack -c Release -p:PackageVersion=2.0.0 /p:NuspecFile=FanapPlus.Ghasedak.Client.nuspec
+dotnet pack -c Release -p:PackageVersion=2.0.1 /p:NuspecFile=FanapPlus.Ghasedak.Client.nuspec
