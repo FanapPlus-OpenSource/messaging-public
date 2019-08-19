@@ -58,7 +58,7 @@ namespace FanapPlus.Ghasedak.Client
             inlineMessage.SignWith(options.PrivateKey);
             var content = inlineMessage.CreateContent();
 
-            var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
+            var httpResponse = await _httpClient.PostAsync("/api/v6.0/message/post", content);
 
             await CheckSuccessStatusCodeAndThrowIfUnsuccessful(httpResponse);
 
@@ -92,7 +92,7 @@ namespace FanapPlus.Ghasedak.Client
             inlineMessage.SignWith(options.PrivateKey);
             var content = inlineMessage.CreateContent();
 
-            var httpResponse = await _httpClient.PostAsync("/api/v5.0/message/post", content);
+            var httpResponse = await _httpClient.PostAsync("/api/v6.0/message/post", content);
 
             await CheckSuccessStatusCodeAndThrowIfUnsuccessful(httpResponse);
 
