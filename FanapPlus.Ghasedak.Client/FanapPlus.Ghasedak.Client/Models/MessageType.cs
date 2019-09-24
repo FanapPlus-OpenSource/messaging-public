@@ -8,6 +8,8 @@
         Unsubscription,
         Verification,
         Charge,
-        SubscriptionQuery
+        SubscriptionQuery,
+        SubscriptionQueryResult,
+        Beacon
     }
 }
